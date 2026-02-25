@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+.wrapper {
+    @apply min-h-screen bg-gray-800 flex items-center;
+} 
+
+.container {
+    @apply flex items-center justify-center w-3/4 mx-auto gap-5 p-4;
+}
+
+.bet-change-btn {
+    @apply bg-gray-800 hover:bg-gray-700 disabled:opacity-50 text-white w-10 h-10 rounded flex items-center justify-center transition-colors cursor-pointer;
+}
+
+.bet-input-field {
+    @apply flex-1 bg-transparent text-white px-3 py-2 outline-none text-lg disabled:opacity-50;
+}
+
+.bet-input-container {
+    @apply flex items-center bg-gray-900 rounded-lg p-1 border border-gray-700;
+}
+
+.button {
+    @apply w-full py-4 rounded-lg font-bold text-lg transition-all duration-300 cursor-pointer;
+}
+
+.button-disabled {
+    @apply bg-gray-700 text-gray-500 cursor-not-allowed;
+}
+
+.button-enabled {
+    @apply text-gray-900;
+}
+
+.game-controls {
+    @apply w-1/3 p-4 bg-gray-900 rounded-lg border border-gray-700;
+}
+
+.game-panel {
+    @apply w-2/3 p-4 bg-gray-900 rounded-lg border border-gray-700;
+}
+
+h3 {
+    @apply text-gray-400 text-sm mb-3 font-medium;
+}

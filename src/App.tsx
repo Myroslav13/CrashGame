@@ -6,10 +6,12 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <GameControls/>
-      <GamePanel/>
-    </>
+    <div className="wrapper">
+      <div className="container">
+        <GameControls/>
+        <GamePanel/>
+      </div>
+    </div>
   )
 }
 
