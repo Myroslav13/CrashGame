@@ -50,7 +50,6 @@ function GamePanel({ status, settledMultiplier, onMultiplierChange }: GamePanelP
     if (!containerRef.current) return;
     let isDisposed = false;
 
-    // Ініціалізуємо гру один раз
     const game = new PixiGame(containerRef.current, (multiplier) => {
       multiplierChangeRef.current(multiplier);
     });
@@ -63,13 +62,8 @@ function GamePanel({ status, settledMultiplier, onMultiplierChange }: GamePanelP
       isReadyRef.current = true;
       applyGameState(statusRef.current, settledMultiplierRef.current);
       lastAppliedStatusRef.current = statusRef.current;
-      
-      // Демонстрація: Запуск гри через 2 секунди після завантаження
-      // (Пізніше це буде викликатись через ваш State Machine)
-      // setTimeout(() => game.startGame(), 2000);
     });
 
-    // Очищення при знищенні компонента
     return () => {
       isDisposed = true;
       isReadyRef.current = false;
@@ -90,7 +84,7 @@ function GamePanel({ status, settledMultiplier, onMultiplierChange }: GamePanelP
   return (
     <div 
       ref={containerRef} 
-      className="w-full h-full relative overflow-hidden rounded-xl border border-gray-800"
+      className="game-panel"
     />
   )
 }

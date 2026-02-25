@@ -13,6 +13,7 @@ function StartButton({ onStart, disabled }: StartButtonProps) {
           ? 'button-disabled'
           : 'button-enabled bg-green-500 hover:bg-green-400 shadow-[0_0_20px_rgba(34,197,94,0.4)]'
       }`}
+      title={disabled ? 'Bet must be > 0 and ≤ balance' : ''}
     >
       START GAME
     </button>

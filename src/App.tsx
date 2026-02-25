@@ -4,13 +4,15 @@ import GamePanel from './components/GamePanel'
 import type { HistoryItem, GameStatus } from './components/interfaces'
 
 function generateCrashPoint() {
-  return Number((1.1 + Math.random() * 4.4).toFixed(2))
+  return Number((1.2 + Math.random() * 8.8).toFixed(2))
 }
 
 function App() {
+  const [balance, setBalance] = useState(1000)
   const [bet, setBet] = useState(100)
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [status, setStatus] = useState<GameStatus>('idle')
+  const [roundBet, setRoundBet] = useState(100)
   const [currentMultiplier, setCurrentMultiplier] = useState(1)
   const [currentWin, setCurrentWin] = useState(0)
   const [crashPoint, setCrashPoint] = useState<number | undefined>(undefined)
@@ -26,6 +28,7 @@ function App() {
   function handleStatusChange(nextStatus: GameStatus) {
     if (nextStatus === 'running') {
       const nextCrashPoint = generateCrashPoint()
+      setRoundBet(bet)
       setCrashPoint(nextCrashPoint)
       setCashoutPoint(undefined)
       setCurrentMultiplier(1)
@@ -38,6 +41,7 @@ function App() {
       const settled = Number(currentMultiplier.toFixed(2))
       setCashoutPoint(settled)
       setCurrentWin(bet * settled)
+      setBalance((prev) => prev + roundBet * settled)
       setStatus('cashed_out')
       pushHistory(settled, true)
       return
@@ -60,6 +64,7 @@ function App() {
       setStatus('crashed')
       setCurrentWin(0)
       setCashoutPoint(undefined)
+      setBalance((prev) => prev - roundBet)
       pushHistory(crashPoint, false)
     }
   }
@@ -74,7 +79,9 @@ function App() {
     <div className="wrapper">
       <div className="container">
         <GameControls
+          balance={balance}
           bet={bet}
+          roundBet={roundBet}
           onBetChange={setBet}
           history={history}
           status={status}

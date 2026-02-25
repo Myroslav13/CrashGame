@@ -26,7 +26,7 @@ function BetInput({ bet, onBetChange, disabled }: BetInputProps) {
           min="1"
           step="1"
         />
-        <div className="flex gap-1 pr-1">
+        <div className="button-container">
           <button
             onClick={handleDecrement}
             disabled={disabled}
