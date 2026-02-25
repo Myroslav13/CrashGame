@@ -1,4 +1,4 @@
-export type GameStatus = 'idle' | 'running' | 'cashed_out' | 'crashed';
+import type { GameStatus } from "../interfaces";
 
 interface StatusDisplayProps {
   status: GameStatus;

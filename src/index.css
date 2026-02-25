@@ -33,11 +33,11 @@
 }
 
 .game-controls {
-    @apply w-1/3 p-4 bg-gray-900 rounded-lg border border-gray-700;
+    @apply w-1/3 h-[350px] p-4 bg-gray-900 rounded-lg border border-gray-700;
 }
 
 .game-panel {
-    @apply w-2/3 p-4 bg-gray-900 rounded-lg border border-gray-700;
+    @apply w-2/3 h-[350px] p-4 bg-gray-900 rounded-lg border border-gray-700;
 }
 
 h3 {

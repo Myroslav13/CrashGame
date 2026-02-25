@@ -3,3 +3,5 @@ export interface HistoryItem {
   multiplier: number;
   isWin: boolean;
 }
+
+export type GameStatus = 'idle' | 'running' | 'cashed_out' | 'crashed';
