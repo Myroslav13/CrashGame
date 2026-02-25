@@ -12,19 +12,21 @@ interface GameControlsProps {
   status: GameStatus
   onStatusChange: (status: GameStatus) => void
   currentWin: number
+  crashPoint?: number
+  cashoutPoint?: number
 }
 
-function GameControls({ bet, onBetChange, history, status, onStatusChange, currentWin }: GameControlsProps) {
+function GameControls({ bet, onBetChange, history, status, onStatusChange, currentWin, crashPoint, cashoutPoint }: GameControlsProps) {
 
   return (
     <div className="game-controls">
       <BetInput bet={bet} onBetChange={onBetChange} disabled={status === 'running'} />
-      { status === 'idle' ?
-        <StartButton onStart={() => onStatusChange('running')} disabled={status !== 'idle'} />
+      { status !== 'running' ?
+        <StartButton onStart={() => onStatusChange('running')} disabled={false} />
         :
         <CashoutButton onCashout={() => onStatusChange('cashed_out')} disabled={status !== 'running'} currentWin={currentWin} />
       }
-      <StatusDisplay status={status} />
+      <StatusDisplay status={status} crashPoint={crashPoint} cashoutPoint={cashoutPoint} />
       <History items={history} />
     </div>
   )
